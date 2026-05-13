@@ -1,0 +1,17 @@
+{
+  "name": "PixPlay Games",
+  "short_name": "PixPlay",
+  "description": "Play 10+ handcrafted browser games offline.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#07070d",
+  "theme_color": "#07070d",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

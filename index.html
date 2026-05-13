@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="PixPlay — Your ultimate casual gaming destination. Play 10+ handcrafted browser games instantly. Snake, 2048, Wordle, Flappy Bird, Minesweeper and more. No downloads required!">
+  <meta name="keywords"
+    content="browser games, casual games, online games, free games, snake, 2048, wordle, flappy bird, minesweeper, tic tac toe, breakout, typing test, memory game, web games, html5 games, pixplay">
+  <meta name="author" content="PixPlay">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#07070d">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="PixPlay — Premium Casual Web Games">
+  <meta property="og:description"
+    content="Play 10+ handcrafted browser games instantly. No downloads, just pure gaming fun.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ojas-denge.github.io/PixPlay">
+  <meta property="og:site_name" content="PixPlay">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PixPlay — Premium Casual Web Games">
+  <meta name="twitter:description" content="Play 10+ handcrafted browser games instantly. No downloads required.">
+
+  <title>PixPlay — Play Free Casual Browser Games | Snake, 2048, Wordle & More</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/index.css">
+  <link rel="stylesheet" href="assets/css/portal.css">
+  <link rel="stylesheet" href="assets/css/game.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="PixPlay">
+</head>
+
+<body>
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo" aria-label="PixPlay Home">
+        <span class="navbar__logo-icon">🎮</span>
+        <span class="navbar__logo-text">PixPlay</span>
+      </a>
+
+      <div class="navbar__search">
+        <span class="navbar__search-icon">🔍</span>
+        <input type="search" id="search-input" class="navbar__search-input" placeholder="Search games..."
+          autocomplete="off" aria-label="Search games">
+      </div>
+
+      <div class="navbar__actions">
+        <button id="nav-sound-btn" class="btn btn--icon btn--ghost" title="Toggle Sound"
+          aria-label="Toggle sound effects">🔊</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="hero" id="hero" aria-labelledby="hero-title">
+    <!-- Floating background icons -->
+    <div class="hero__floaters" aria-hidden="true">
+      <span class="hero__float-icon">🐍</span>
+      <span class="hero__float-icon">🐦</span>
+      <span class="hero__float-icon">🔨</span>
+      <span class="hero__float-icon">🔢</span>
+      <span class="hero__float-icon">📝</span>
+      <span class="hero__float-icon">💣</span>
+      <span class="hero__float-icon">🃏</span>
+      <span class="hero__float-icon">❌</span>
+      <span class="hero__float-icon">🧱</span>
+      <span class="hero__float-icon">⌨️</span>
+    </div>
+
+    <div class="hero__content">
+      <div class="hero__badge">
+        <span class="hero__badge-dot"></span>
+        10 Handcrafted Games — Zero Downloads
+      </div>
+
+      <h1 id="hero-title" class="hero__title">
+        <span class="text-gradient">Play. Compete.</span><br>Repeat.
+      </h1>
+
+      <p class="hero__subtitle">
+        Your ultimate casual gaming destination. Premium handcrafted browser games with stunning visuals, satisfying
+        sounds, and buttery-smooth gameplay.
+      </p>
+
+      <div class="hero__actions">
+        <a href="#games-section" id="hero-cta" class="btn btn--primary btn--lg">
+          🎮 Start Playing
+        </a>
+        <a href="#games-section" class="btn btn--secondary btn--lg">
+          Browse Games ↓
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== STATS BAR ==================== -->
+  <div class="stats-bar" aria-label="Portal statistics">
+    <div class="stats-bar__inner container">
+      <div class="stats-bar__item">
+        <div class="stats-bar__value">10</div>
+        <div class="stats-bar__label">Games</div>
+      </div>
+      <div class="stats-bar__item">
+        <div class="stats-bar__value">6</div>
+        <div class="stats-bar__label">Categories</div>
+      </div>
+      <div class="stats-bar__item">
+        <div class="stats-bar__value" id="stat-games-played">0</div>
+        <div class="stats-bar__label">Games Played</div>
+      </div>
+      <div class="stats-bar__item">
+        <div class="stats-bar__value">0</div>
+        <div class="stats-bar__label">Downloads Needed</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== GAMES SECTION ==================== -->
+  <section class="games-section" id="games-section" aria-labelledby="games-title">
+    <div class="container">
+      <div class="games-section__header">
+        <h2 id="games-title" class="games-section__title">Choose Your <span class="text-gradient">Game</span></h2>
+        <p class="games-section__subtitle">Click any game to play instantly — no loading, no signup.</p>
+      </div>
+
+      <!-- Category Filters -->
+      <div class="category-filters" id="category-filters" role="group" aria-label="Game category filters"></div>
+
+      <!-- Game Grid (populated by JS) -->
+      <div class="game-grid" id="game-grid" role="list" aria-label="Games list"></div>
+
+      <!-- Ad Zone (future) -->
+      <aside class="ad-zone" id="ad-zone-1" aria-label="Advertisement"></aside>
+    </div>
+  </section>
+
+  <!-- Dedicated game pages handle the gameplay view -->
+
+  <!-- ==================== GAME OVER MODAL ==================== -->
+  <div class="modal-backdrop" id="modal-backdrop" aria-modal="true" role="dialog">
+    <div class="modal">
+      <div id="modal-icon" class="modal__icon">😵</div>
+      <h2 id="modal-title" class="modal__title">Game Over!</h2>
+      <div class="modal__scores">
+        <div class="modal__score-item">
+          <span class="modal__score-label">Score</span>
+          <span id="modal-score" class="modal__score-value">0</span>
+        </div>
+        <div class="modal__score-item">
+          <span class="modal__score-label">Best</span>
+          <span id="modal-best" class="modal__score-value">0</span>
+        </div>
+      </div>
+      <div id="modal-new-best" class="modal__new-best" hidden>🎉 New High Score!</div>
+      <div class="modal__actions">
+        <button id="modal-play-again" class="btn btn--primary btn--lg">▶ Play Again</button>
+        <button id="modal-exit" class="btn btn--secondary">← Back to Games</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <a href="index.html" class="footer__logo">
+        <span class="text-gradient">🎮 PixPlay</span>
+      </a>
+      <p class="footer__tagline">Handcrafted casual games for everyone.</p>
+      <nav class="footer__links" aria-label="Footer links">
+        <a href="#games-section" class="footer__link">Games</a>
+        <a href="#" class="footer__link">About</a>
+        <a href="#" class="footer__link">Privacy</a>
+        <a href="#" class="footer__link">Contact</a>
+      </nav>
+      <p class="footer__copy">&copy; 2026 PixPlay. All rights reserved. Made with ❤️ and JavaScript.</p>
+    </div>
+  </footer>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script src="assets/js/storage.js" defer></script>
+  <script src="assets/js/audio.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+</body>
+
+</html>

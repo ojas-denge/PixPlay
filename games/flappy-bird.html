@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tap to flap through the pipes. One touch, endless challenge!">
+  <title>Play Flappy Bird — PixPlay</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/index.css">
+  <link rel="stylesheet" href="../assets/css/portal.css">
+  <link rel="stylesheet" href="../assets/css/game.css">
+  <style>
+    body { background: #07070d; color: #f1f5f9; overflow-x: hidden; }
+    .dedicated-game-page { padding-top: 80px; min-height: 100vh; display: flex; flex-direction: column; }
+    .game-overlay__header, .game-overlay__footer { background: transparent; padding: 10px 20px; }
+    .game-overlay__body { flex: 1; display: flex; align-items: center; justify-content: center; }
+  </style>
+
+  <link rel="manifest" href="../manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="PixPlay">
+</head>
+<body data-game-id="flappy-bird">
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="../index.html" class="navbar__logo">
+        <span class="navbar__logo-icon">🎮</span>
+        <span class="navbar__logo-text">PixPlay</span>
+      </a>
+      <div class="navbar__actions">
+        <a href="../index.html" class="btn btn--ghost" style="text-decoration:none;">← Back to Games</a>
+        <button id="nav-sound-btn" class="btn btn--icon btn--ghost" title="Toggle Sound">🔊</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="dedicated-game-page">
+    <div class="game-overlay__header" style="max-width: 800px; width: 100%; margin: 0 auto;">
+      <div class="game-overlay__title-area">
+        <h1 id="game-title" class="game-overlay__title">Flappy Bird</h1>
+      </div>
+      <div class="game-overlay__scores">
+        <div class="game-overlay__score-item">
+          <span class="game-overlay__score-label">Score</span>
+          <span id="game-score-value" class="game-overlay__score-value">0</span>
+        </div>
+        <div class="game-overlay__score-item">
+          <span class="game-overlay__score-label">Best</span>
+          <span id="game-best-value" class="game-overlay__score-value">0</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-overlay__body" style="max-width: 800px; width: 100%; margin: 0 auto;">
+      <div id="game-container" class="game-overlay__container"></div>
+    </div>
+
+    <div class="game-overlay__footer" style="max-width: 800px; width: 100%; margin: 0 auto; display: flex; justify-content: space-between;">
+      <div id="game-controls-help" class="game-overlay__controls"></div>
+      <div class="game-overlay__actions">
+        <button id="game-restart-btn" class="btn btn--ghost">🔄 Restart</button>
+        <button id="game-pause-btn" class="btn btn--ghost">⏸ Pause</button>
+        <button id="game-sound-btn" class="btn btn--ghost">🔊 Sound</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- GAME OVER MODAL -->
+  <div class="modal-backdrop" id="modal-backdrop" aria-modal="true" role="dialog">
+    <div class="modal">
+      <div id="modal-icon" class="modal__icon">😵</div>
+      <h2 id="modal-title" class="modal__title">Game Over!</h2>
+      <div class="modal__scores">
+        <div class="modal__score-item">
+          <span class="modal__score-label">Score</span>
+          <span id="modal-score" class="modal__score-value">0</span>
+        </div>
+        <div class="modal__score-item">
+          <span class="modal__score-label">Best</span>
+          <span id="modal-best" class="modal__score-value">0</span>
+        </div>
+      </div>
+      <div id="modal-new-best" class="modal__new-best" hidden>🎉 New High Score!</div>
+      <div class="modal__actions">
+        <button id="modal-play-again" class="btn btn--primary btn--lg">▶ Play Again</button>
+        <a href="../index.html" id="modal-exit" class="btn btn--secondary" style="text-decoration:none;">← Back to Games</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/storage.js"></script>
+  <script src="../assets/js/audio.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>
