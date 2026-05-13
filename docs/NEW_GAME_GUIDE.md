@@ -4,7 +4,7 @@ Adding a new game to the PixPlay portal is incredibly straightforward thanks to 
 
 ## 1. Create the Game Engine File
 
-Create a new file in the `js/games/` directory (e.g., `my-new-game.js`).
+Create a new file in the `assets/js/games/` directory (e.g., `my-new-game.js`).
 Your game must be encapsulated within an IIFE (Immediately Invoked Function Expression) to prevent polluting the global scope, and it MUST register itself to the global `window.PixPlayGames` registry.
 
 ### Required API Contract
@@ -84,9 +84,9 @@ The PixPlay portal wrapper automatically attaches a global `touchmove` scroll lo
 })();
 ```
 
-## 2. Register the Game in `js/app.js`
+## 2. Register the Game in `assets/js/app.js`
 
-Open `js/app.js` and locate the `GAMES` array at the top of the file. Add a new object for your game:
+Open `assets/js/app.js` and locate the `GAMES` array at the top of the file. Add a new object for your game:
 
 ```javascript
 {
@@ -101,9 +101,13 @@ Open `js/app.js` and locate the `GAMES` array at the top of the file. Add a new 
   description: 'An exciting new adventure in space!',
   controls: 'Arrow Keys / Space', // Tooltip text
   controlsHTML: '<kbd>↑</kbd><kbd>↓</kbd> or <kbd>Space</kbd>', // Footer help UI
-  scriptFile: 'js/games/my-new-game.js' // Path to your engine file
+  scriptFile: 'assets/js/games/my-new-game.js' // Path to your engine file
 }
 ```
+
+## 3. Register in Service Worker (Optional if using Script)
+
+The `sw.js` file handles offline support. While the generation script (next step) can update this for you, it's good to know that every game HTML and JS file must be listed in the `ASSETS` array in `sw.js`.
 
 ## 3. Re-generate the HTML Page
 
@@ -121,4 +125,12 @@ This will parse the updated `GAMES` list and automatically generate `games/my-ne
 
 1. Open `index.html` in your browser.
 2. You will see your new game card dynamically rendered.
-3. Click it! The portal will load your HTML page, dynamically inject your script (`js/games/my-new-game.js`), call `init()`, and wire up the Score UI, Restart button, Pause button, and Audio systems automatically!
+3. Click it! The portal will load your HTML page, dynamically inject your script (`assets/js/games/my-new-game.js`), call `init()`, and wire up the Score UI, Restart button, Pause button, and Audio systems automatically!
+
+## 5. Summary Checklist
+
+- [ ] Game logic in `assets/js/games/ID.js`
+- [ ] Game registered in `GAMES` array in `assets/js/app.js`
+- [ ] Run `node generate_pages.js` to create HTML and update `sw.js`
+- [ ] Verify category matches `CATEGORIES` in `assets/js/app.js`
+- [ ] Update category count in `index.html` (Stats Bar) if a new category was added.
